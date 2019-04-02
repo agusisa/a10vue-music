@@ -48,14 +48,24 @@
               a Components
             li
               a Layout
+          a10-player.centeredPlayer
 
         
 
 </template>
 
 <script>
+  import a10Player from '@/components/Player.vue'
+
   export default {
     name: "A10Header",
+    components: { a10Player },
   }
 </script>
+
+<style lang="sass" scoped>
+  .centeredPlayer 
+    text-align: center;
+</style>
+
 

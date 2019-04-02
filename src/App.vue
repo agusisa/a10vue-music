@@ -60,11 +60,6 @@ export default {
       showNotification: false
     };
   },
-  created() {
-    return {
-      // isLoading: "false"
-    };
-  },
   computed: {
     searchMessage() {
       return `Encontrados: ${this.tracks.length}`
@@ -81,6 +76,11 @@ export default {
         },3000)
       }
     }
+  },
+  created() {
+    return {
+      // isLoading: "false"
+    };
   },
   methods: {
     search() {
