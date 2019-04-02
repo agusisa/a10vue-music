@@ -12,21 +12,32 @@
           p.title.is-6
             strong {{ track.name }}
           p.subtitle.is-6 {{ track.artist }}
-      .content
+      .content.center
         small {{track.duration_ms}}
         nav-bar.level
           .level-left
             a.level-item
-              span.icon.is-small ▶
+              div.icon.is-small.center(:class="{ 'blue': true }",@click="selectTrack") ▶
 </template>
 
 <script>
 export default {
   props: {
     track: { type: Object, required: true }
+  },
+  methods: {
+    selectTrack() {
+      this.$emit("select", this.track.id);
+    }
   }
 };
 </script>
 
 <style>
+.blue {
+  color: blue;
+}
+.center{
+  text-align: center;
+}
 </style>
