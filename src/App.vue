@@ -2,8 +2,9 @@
   #app
     a10-header
 
-    a10-notification(v-show="showNotification")
-      p(slot="body") No se encontraron resultados
+    a10-notification(:typeNotification="hasData", v-show="showNotification")
+      p(v-if="hasData" slot="body") No se encontraron resultados
+      p(v-else slot="body") {{ searchMessage }}
 
     a10-loader(v-show="isLoading")
 
@@ -57,7 +58,8 @@ export default {
       searchQuery: "",
       tracks: [],
       selectedTrack: '',
-      showNotification: false
+      showNotification: false,
+      hasData: false
     };
   },
   computed: {
@@ -90,8 +92,11 @@ export default {
 
       trackService.search(this.searchQuery).then(res => {
         console.log(res)
-        this.showNotification = res.tracks.total === 0
+        this.showNotification = true
+          this.hasData = res.tracks.total === 0
+          this.tracks = res.tracks.items
         this.isLoading = false
+
         this.isClear = true;
         this.tracks = res.tracks.items
       });

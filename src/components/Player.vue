@@ -11,6 +11,7 @@
 
 <script>
 export default {
+  name: "A10Player",
   data() {
     return {
       track: {}

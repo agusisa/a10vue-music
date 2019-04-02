@@ -22,6 +22,7 @@
 
 <script>
 export default {
+  name: "A10Track",
   props: {
     track: { type: Object, required: true }
   },
